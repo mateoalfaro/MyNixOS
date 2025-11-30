@@ -10,9 +10,9 @@ A NixOS template for a flakes + home-manager based config
  ├── hardware-configuration.nix # (must be manually imported)
  └── modules/                   # home to the rest of the config
     ├── boot.nix
-    ├── gaming.nix
     ├── hardware.nix
     ├── networking.nix
     ├── system.nix
     └── users.nix
+ └── config/                    # Personal stuff 
 ```
