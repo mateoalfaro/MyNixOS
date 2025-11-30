@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -13,6 +13,7 @@
     ./modules/users.nix
 
     # Extras
+    ./config/coding.nix
     ./config/gaming.nix
     ./config/hypr.nix
     ./config/launcher.nix
