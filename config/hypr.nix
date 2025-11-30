@@ -7,6 +7,8 @@
     withUWSM = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   # HOME MANAGER
   home-manager.users.jafed =
     { ... }:
