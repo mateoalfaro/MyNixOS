@@ -21,6 +21,11 @@
         portalPackage = null;
 
         settings = {
+          # DISPLAYS
+          monitor = [
+            "DP-2, 2560x1440@180, 0x0, 1, vrr, 1"
+            "HDMI-A-1, 3840x2160@60, 2560x0, 1.5"
+          ];
 
           # BINDS
           bind = [
