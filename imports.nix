@@ -13,6 +13,8 @@
     ./modules/users.nix
 
     # Extras
-    ./modules/gaming.nix
+    ./config/gaming.nix
+    ./config/hypr.nix
+    ./config/launcher.nix
   ];
 }

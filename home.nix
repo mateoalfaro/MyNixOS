@@ -5,6 +5,9 @@
     homeDirectory = "/home/jafed";
     packages = with pkgs; [
       google-chrome
+      ghostty
+      vesktop
+      zed-editor
     ];
     stateVersion = "25.11";
   };

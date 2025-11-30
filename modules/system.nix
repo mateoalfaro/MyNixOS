@@ -36,8 +36,8 @@
     options = "--delete-older-than 3d";
   };
 
-  # Services
-  services.flatpak.enable = true;
+  # Services (requires a configured XDG Portal)
+  # services.flatpak.enable = true;
 
   # SystemWide Packages
   environment.systemPackages = with pkgs; [
