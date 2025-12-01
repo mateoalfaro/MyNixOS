@@ -7,6 +7,7 @@
     withUWSM = true;
   };
 
+  services.displayManager.sddm.wayland.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   # HOME MANAGER

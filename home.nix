@@ -8,8 +8,10 @@
       ghostty
       vesktop
       zed-editor
+      cider-2
     ];
     stateVersion = "25.11";
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
   programs.home-manager.enable = true;
