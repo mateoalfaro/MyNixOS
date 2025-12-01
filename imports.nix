@@ -16,6 +16,6 @@
     ./config/coding.nix
     ./config/gaming.nix
     ./config/hypr.nix
-    ./config/launcher.nix
+    ./config/shell.nix
   ];
 }
