@@ -14,10 +14,29 @@
           environment = [ ];
         };
         settings = {
-          bar.status = {
-            showBattery = false;
+          bar = {
+            status = {
+              showBattery = false;
+              showAudio = true;
+              showMicrophone = false;
+            };
+            scrollActions = {
+              volume = true;
+              brightness = false;
+            };
           };
-          paths.wallpaperDir = "~/.build/themes/wallpapers";
+
+          services = {
+            smartScheme = true;
+          };
+
+          osd = {
+            enableBrightness = false; # Disables the brightness slider popup
+          };
+          paths = {
+            wallpaperDir = "~/.build/themes/wallpapers";
+            sessionGif = "";
+          };
         };
         cli = {
           enable = true; # Also add caelestia-cli to path
