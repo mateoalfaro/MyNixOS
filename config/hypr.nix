@@ -16,6 +16,7 @@
   services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [
+    pavucontrol
     nautilus
   ];
   # HOME MANAGER
