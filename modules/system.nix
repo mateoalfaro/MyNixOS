@@ -46,4 +46,16 @@
   environment.systemPackages = with pkgs; [
     git
   ];
+
+  security.sudo.extraRules = [
+    {
+      users = [ "jafed" ]; # Replace with your actual username
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 }

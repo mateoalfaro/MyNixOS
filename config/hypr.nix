@@ -107,6 +107,7 @@
 
             # Utils
             ", Print, global, caelestia:screenshotFreeze"
+            "SUPER, Print, exec, caelestia screenshot"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"

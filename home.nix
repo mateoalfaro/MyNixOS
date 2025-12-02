@@ -10,6 +10,8 @@
       zed-editor
       cider-2
       bazaar
+      prismlauncher
+      vlc
     ];
     stateVersion = "25.11";
     sessionVariables.NIXOS_OZONE_WL = "1";
