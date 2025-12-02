@@ -40,7 +40,7 @@
   };
 
   # Services (requires a configured XDG Portal)
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   # SystemWide Packages
   environment.systemPackages = with pkgs; [
