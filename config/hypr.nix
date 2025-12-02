@@ -15,6 +15,9 @@
   services.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    nautilus
+  ];
   # HOME MANAGER
   home-manager.users.jafed =
     { ... }:
@@ -96,6 +99,13 @@
             "ALT, Space, global, caelestia:launcher"
             "SUPER, Q, killactive"
             "SUPER, F, fullscreen"
+
+            # Workspace switching
+            "SUPER, M, exec, caelestia toggle music"
+            "SUPER, N, exec, caelestia toggle communication"
+
+            # Utils
+            ", Print, global, caelestia:screenshotFreeze"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"
