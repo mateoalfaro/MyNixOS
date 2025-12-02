@@ -7,6 +7,11 @@
     withUWSM = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+  };
+
   services.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
