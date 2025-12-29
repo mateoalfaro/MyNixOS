@@ -16,6 +16,7 @@
     ./modules/gnome.nix
 
     # Extras
-    ./modules/gaming.nix
+    ./config/coding.nix
+    ./config/gaming.nix
   ];
 }
