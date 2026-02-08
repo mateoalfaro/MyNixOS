@@ -7,7 +7,7 @@
       google-chrome
       vesktop
       zed-editor
-      cider-2
+      sbctl
       bazaar
       vlc
     ];

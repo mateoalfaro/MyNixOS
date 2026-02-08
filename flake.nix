@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -16,6 +21,7 @@
       self,
       nixpkgs,
       home-manager,
+      lanzaboote,
     }@inputs:
     {
       nixosConfigurations = {
@@ -24,6 +30,7 @@
           modules = [
             ./imports.nix
             home-manager.nixosModules.home-manager
+            lanzaboote.nixosModules.lanzaboote
             {
               home-manager = {
                 useGlobalPkgs = true;
