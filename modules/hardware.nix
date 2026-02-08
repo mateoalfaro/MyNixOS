@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
 
 {
   # Graphics & Nvidia
@@ -10,6 +10,11 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    settings.General = lib.mkIf config.axunes.use_le_audio {
+      Experimental = true;
+      ControllerMode = "le";
+      KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
+    };
   };
 
   # Sound
