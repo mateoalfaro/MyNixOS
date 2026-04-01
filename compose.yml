@@ -3,29 +3,26 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     network_mode: host
-    runtime: nvidia
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=984
       - TZ=Etc/UTC
       - VERSION=docker
       - PLEX_CLAIM= #optional
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
     volumes:
-      - /home/jafed/docker/plex:/config
-      - /home/jafed/docker/media:/media:shared
+      - /docker/plex:/config
+      - /docker/media:/media:shared
     restart: unless-stopped
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=984
       - TZ=Etc/UTC
     volumes:
-      - /home/jafed/docker/sonarr:/config
-      - /home/jafed/docker/media:/media:shared #optional
+      - /docker/sonarr:/config
+      - /docker/media:/media:shared #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -33,12 +30,12 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=984
       - TZ=Etc/UTC
     volumes:
-      - /home/jafed/docker/prowlarr:/config
-      - /home/jafed/docker/prowlarr/Custom:/config/Definitions/Custom
+      - /docker/prowlarr:/config
+      - /docker/prowlarr/Custom:/config/Definitions/Custom
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -58,12 +55,12 @@ services:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=984
       - TZ=Etc/UTC
     volumes:
-      - /jafed/home/docker/radarr:/config
-      - /home/jafed/docker/media:/media:shared
+      - /docker/radarr:/config
+      - /docker/media:/media:shared
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -72,9 +69,12 @@ services:
     container_name: decypharr
     ports:
       - "8282:8282"
+    environment:
+      - PUID=1001
+      - PGID=984
     volumes:
       - ./configs/:/app # config.json must be in this directory
-      - /home/jafed/docker/media/:/media:rshared
+      - /docker/media/:/media:rshared
     restart: unless-stopped
     devices:
       - /dev/fuse:/dev/fuse:rwm
@@ -86,11 +86,11 @@ services:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=984
       - TZ=Etc/UTC
     volumes:
-      - /home/jafed/docker/overseerr:/config
+      - /docker/overseerr:/config
     ports:
       - 5055:5055
     restart: unless-stopped
