@@ -1,24 +1,26 @@
 services:
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
     environment:
-      - PUID=1001
-      - PGID=984
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
-      - VERSION=docker
-      - PLEX_CLAIM= #optional
     volumes:
-      - /docker/plex:/config
+      - /docker/jelly:/config
       - /docker/media:/media:shared
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
     restart: unless-stopped
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      - PUID=1001
-      - PGID=984
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - /docker/sonarr:/config
@@ -30,8 +32,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=1001
-      - PGID=984
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - /docker/prowlarr:/config
@@ -50,13 +52,13 @@ services:
       - TZ=Europe/London
     ports:
       - "${PORT:-8191}:8191"
-    restart: unless-stopped 
+    restart: unless-stopped
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
-      - PUID=1001
-      - PGID=984
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - /docker/radarr:/config
@@ -70,8 +72,8 @@ services:
     ports:
       - "8282:8282"
     environment:
-      - PUID=1001
-      - PGID=984
+      - PUID=1000
+      - PGID=1000
     volumes:
       - ./configs/:/app # config.json must be in this directory
       - /docker/media/:/media:rshared
@@ -82,15 +84,35 @@ services:
       - SYS_ADMIN
     security_opt:
       - apparmor:unconfined
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
     environment:
-      - PUID=1001
-      - PGID=984
-      - TZ=Etc/UTC
-    volumes:
-      - /docker/overseerr:/config
+      - LOG_LEVEL=debug
+      - TZ=Asia/Tashkent
+      - PORT=5055 #optional
     ports:
       - 5055:5055
+    volumes:
+      - /docker/seer:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     restart: unless-stopped
+  torbox-media-center:
+      container_name: torbox-media-center
+      stdin_open: true
+      tty: true
+      restart: always
+      volumes:
+          - /docker/media/tests/torbox:/torbox
+      environment:
+          - TORBOX_API_KEY=b2a76d8f-86d8-4082-871f-b107571788bc
+          - MOUNT_METHOD=strm
+          - MOUNT_PATH=/torbox
+          - ENABLE_METADATA=true
+      image: anonymoussystems/torbox-media-center:latest
