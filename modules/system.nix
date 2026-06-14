@@ -1,6 +1,13 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+  # NH
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/jafed/.desktop"; # sets NH_OS_FLAKE variable for you
+  };
   # Time & Locale
   time.timeZone = "America/Costa_Rica";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -32,18 +39,12 @@
   # System State Version
   system.stateVersion = "25.11";
 
-  # Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 3d";
-  };
-
   # Services
   services.flatpak.enable = true;
 
   # SystemWide Packages
   environment.systemPackages = with pkgs; [
     git
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
