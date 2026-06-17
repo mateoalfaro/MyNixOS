@@ -7,13 +7,18 @@
     singularity-desktop.url = "path:./desktop";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.0.0";
+      url = "github:nix-community/lanzaboote/001e560";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hermes-agent = {
+        url = "github:NousResearch/hermes-agent";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -24,6 +29,7 @@
       singularity-desktop,
       lanzaboote,
       zen-browser,
+      hermes-agent,
     }@inputs:
     {
       nixosConfigurations = {
@@ -33,6 +39,7 @@
           modules = [
             ./imports.nix
             lanzaboote.nixosModules.lanzaboote
+            hermes-agent.nixosModules.default
           ];
         };
       };

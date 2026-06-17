@@ -41,9 +41,9 @@
         src = pkgs.fetchFromGitHub {
           owner = "singularityos-lab";
           repo = "singularity-desktop";
-          rev = "ff134336f9db937838ed525a9e979e0a15327507";
+          rev = "0394fc9863555e471281f1c1be1d7588eda56836";
           fetchSubmodules = true;
-          hash = "sha256-wGkxWyd3ZJ6D/0zDWlmnPw6LhE/uDh/Lk2eCHJbdgEc=";
+          hash = "sha256-ok/F/kIlXWCIEuySjb1+3di2hDAUvGUoSKEQBGNQNQ8=";
         };
 
         nativeBuildInputs = with pkgs; [

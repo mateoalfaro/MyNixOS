@@ -3,13 +3,16 @@
 {
   environment.systemPackages = with pkgs; [
     discord
-    eden
+    ryubing
     zed-editor
     sbctl
     bazaar
     mathematica
     vlc
     nixd
+    resources
+    stremio-linux-shell
+    opencode
     inputs.singularity-desktop.packages.${pkgs.system}.default
   ];
 }

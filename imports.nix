@@ -18,5 +18,6 @@
 
     # Extras
     ./config/gaming.nix
+    ./config/hermes.nix
   ];
 }
