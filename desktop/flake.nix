@@ -26,6 +26,15 @@
 
         vendorHash = "sha256-BKIYil3eWmwqIUf/46LY426uBN7qrVaqWX3YvODj8gc=";
 
+        # Names that already start with "Singularity" are fully-qualified
+        # GObject type names; return them unchanged instead of prefixing "Gtk".
+        postPatch = ''
+          substituteInPlace internal/domain/vetro/utils.go \
+            --replace-fail \
+              $'\treturn gtkClassPrefix + name' \
+              $'\tif strings.HasPrefix(name, "Singularity") {\n\t\treturn name\n\t}\n\treturn gtkClassPrefix + name'
+        '';
+
         meta = {
           description = "Declarative GTK4 UI transpiler";
           homepage = "https://github.com/singularityos-lab/vetro";
@@ -41,9 +50,9 @@
         src = pkgs.fetchFromGitHub {
           owner = "singularityos-lab";
           repo = "singularity-desktop";
-          rev = "0394fc9863555e471281f1c1be1d7588eda56836";
+          rev = "ff134336f9db937838ed525a9e979e0a15327507";
           fetchSubmodules = true;
-          hash = "sha256-ok/F/kIlXWCIEuySjb1+3di2hDAUvGUoSKEQBGNQNQ8=";
+          hash = "sha256-wGkxWyd3ZJ6D/0zDWlmnPw6LhE/uDh/Lk2eCHJbdgEc=";
         };
 
         nativeBuildInputs = with pkgs; [
@@ -60,6 +69,7 @@
           sassc
           python3
           vetro
+          desktop-file-utils
         ];
 
         buildInputs = with pkgs; [
@@ -158,6 +168,41 @@
               ln -sf "$f" $out/share/glib-2.0/schemas/
             done
             ${pkgs.glib.dev}/bin/glib-compile-schemas $out/share/glib-2.0/schemas
+          fi
+
+          # Modify systemd user units to use $out paths instead of hardcoded /opt/...
+
+          systemd_user=$out/share/systemd/user
+          substituteInPlace $systemd_user/xdg-desktop-portal-singularity.service \
+            --replace-fail \
+              "ExecStart=/bin/sh -c 'for d in /opt/local/bin /opt/bin /usr/local/bin %h/.local/singularity/bin /usr/bin; do if [ -x \"\$d/xdg-desktop-portal-singularity\" ]; then exec \"\$d/xdg-desktop-portal-singularity\"; fi; done; exit 1'" \
+              "ExecStart=$out/libexec/xdg-desktop-portal-singularity"
+          substituteInPlace $systemd_user/singularity-polkit-agent.service \
+            --replace-fail \
+              "ExecStart=/usr/libexec/singularity-polkit-agent" \
+              "ExecStart=$out/libexec/singularity-polkit-agent"
+
+          mkdir -p $out/share/dbus-1/services
+          cat > $out/share/dbus-1/services/org.freedesktop.impl.portal.desktop.singularity.service << EOF
+          [D-BUS Service]
+          Name=org.freedesktop.impl.portal.desktop.singularity
+          Exec=$out/libexec/xdg-desktop-portal-singularity
+          SystemdService=xdg-desktop-portal-singularity.service
+          EOF
+
+          mkdir -p $out/share/xdg-desktop-portal
+          cat > $out/share/xdg-desktop-portal/portals.conf << EOF
+          [preferred]
+          default=singularity;gtk
+          EOF
+
+          # Build mimeinfo.cache so xdg-mime / GAppInfo resolve the bundled
+          # .desktop files (e.g. singularity-edit launches for text/plain). On
+          # NixOS this normally happens at the system-profile level, but
+          # because the session puts $out/share FIRST in XDG_DATA_DIRS we want
+          # a complete cache there too.
+          if [ -d $out/share/applications ] && [ -x ${pkgs.desktop-file-utils}/bin/update-desktop-database ]; then
+            ${pkgs.desktop-file-utils}/bin/update-desktop-database $out/share/applications
           fi
 
           # Register as a Wayland session for display managers

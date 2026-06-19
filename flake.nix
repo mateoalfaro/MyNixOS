@@ -15,11 +15,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hermes-agent = {
-        url = "github:NousResearch/hermes-agent";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -28,8 +23,7 @@
       nixpkgs,
       singularity-desktop,
       lanzaboote,
-      zen-browser,
-      hermes-agent,
+      zen-browser
     }@inputs:
     {
       nixosConfigurations = {
@@ -39,7 +33,6 @@
           modules = [
             ./imports.nix
             lanzaboote.nixosModules.lanzaboote
-            hermes-agent.nixosModules.default
           ];
         };
       };
