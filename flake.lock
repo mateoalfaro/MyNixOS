@@ -166,11 +166,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "path": "./desktop",
+        "path": "./desktop/test1",
         "type": "path"
       },
       "original": {
-        "path": "./desktop",
+        "path": "./desktop/test1",
         "type": "path"
       },
       "parent": []

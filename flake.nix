@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    singularity-desktop.url = "path:./desktop";
+    singularity-desktop = {
+      url = "github:mateoalfaro/singularity-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/001e560";
@@ -33,6 +36,7 @@
           modules = [
             ./imports.nix
             lanzaboote.nixosModules.lanzaboote
+            singularity-desktop.nixosModules.default
           ];
         };
       };
