@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     singularity-desktop = {
-      url = "github:mateoalfaro/singularity-flake";
+      url = "path:/home/jafed/singularity-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

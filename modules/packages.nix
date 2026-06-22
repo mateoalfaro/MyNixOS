@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -13,6 +13,7 @@
     resources
     stremio-linux-shell
     opencode
-    inputs.singularity-desktop.packages.${pkgs.system}.default
+    bibata-cursors
+    papirus-icon-theme
   ];
 }
