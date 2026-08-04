@@ -2,18 +2,19 @@
 
 {
   environment.systemPackages = with pkgs; [
-    discord
-    ryubing
-    zed-editor
-    sbctl
     bazaar
-    mathematica
-    vlc
-    nixd
-    resources
-    stremio-linux-shell
-    opencode
     bibata-cursors
+    discord
+    ghostty
+    mathematica
+    onlyoffice-desktopeditors
     papirus-icon-theme
+    resources
+    ryubing
+    sbctl
+    stremio-linux-shell
+    vicinae
+    vlc
+    zed-editor
   ];
 }

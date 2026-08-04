@@ -1,14 +1,15 @@
 { inputs, pkgs, ... }:
 
 {
-  # NH
+  # System management
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/jafed/.desktop"; # sets NH_OS_FLAKE variable for you
+    flake = "/home/jafed/.desktop";
   };
-  # Time & Locale
+
+  # Time and locale
   time.timeZone = "America/Costa_Rica";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -23,26 +24,27 @@
     LC_TIME = "es_CR.UTF-8";
   };
 
-  # Keyboard Layout
+  # Keyboard layout
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  # Nix Settings
+  # Nix settings
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
   nixpkgs.config.allowUnfree = true;
 
-  # System State Version
+  # System state version
   system.stateVersion = "25.11";
 
   # Services
   services.flatpak.enable = true;
+  services.tailscale.enable = true;
 
-  # SystemWide Packages
+  # Core packages
   environment.systemPackages = with pkgs; [
     git
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
