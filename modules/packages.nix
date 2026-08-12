@@ -5,15 +5,13 @@
     bazaar
     bibata-cursors
     discord
-    ghostty
-#    mathematica
+    #    mathematica
     onlyoffice-desktopeditors
     papirus-icon-theme
     resources
     ryubing
     sbctl
     stremio-linux-shell
-    vicinae
     vlc
     zed-editor
   ];
