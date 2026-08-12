@@ -47,6 +47,6 @@
   # Core packages
   environment.systemPackages = with pkgs; [
     git
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.helium.packages.x86_64-linux.default
   ];
 }

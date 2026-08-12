@@ -21,8 +21,7 @@
     };
 
     singularity-desktop = {
-      url = "path:/home/jafed/singularity-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "path:/home/jafed/devwork/singularity-flake";
     };
 
     lanzaboote = {
@@ -32,10 +31,7 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    helium.url = "github:schembriaiden/helium-browser-nix-flake";
 
   };
 
@@ -49,7 +45,7 @@
       codex-cli,
       singularity-desktop,
       lanzaboote,
-      zen-browser,
+      helium,
       llm-agents,
     }@inputs:
     let

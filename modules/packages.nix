@@ -6,7 +6,7 @@
     bibata-cursors
     discord
     ghostty
-    mathematica
+#    mathematica
     onlyoffice-desktopeditors
     papirus-icon-theme
     resources

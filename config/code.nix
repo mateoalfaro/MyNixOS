@@ -13,7 +13,7 @@ in
   environment.systemPackages = with pkgs; [
     android-studio
     android-tools
-    agentPackages.claude-code
+    agentPackages.omp
     agentPackages.cli-proxy-api
     agentPackages.opencode
     agentPackages.opencode2
@@ -30,13 +30,6 @@ in
     wf-recorder
   ];
 
-  programs.ydotool.enable = true;
-
-  users.users.jafed.extraGroups = [
-    "hermes"
-    "ydotool"
-  ];
-
   nix.settings = {
     extra-substituters = [ "https://codex-cli.cachix.org" ];
     extra-trusted-public-keys = [
@@ -48,7 +41,7 @@ in
     imports = [ inputs.codex.homeManagerModules.default ];
 
     programs.codexDesktopLinux = {
-      enable = true;
+      enable = false;
       cliPackage = codexCli;
       computerUseUi.enable = true;
       remoteMobileControl.enable = true;
