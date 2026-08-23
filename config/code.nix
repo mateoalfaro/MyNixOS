@@ -15,37 +15,35 @@ in
     android-tools
     agentPackages.omp
     agentPackages.cli-proxy-api
-    agentPackages.opencode
+    opencode
     agentPackages.opencode2
     codexCli
+    agentPackages.chatgpt
+    agentPackages.dsh
     gcc
     gh
     grim
     nixd
-    opencode-desktop
+    nil
     ripgrep
     rstudio
     stablePkgs.jetbrains.clion
     t3code
-    wf-recorder
+    nodejs
   ];
 
   nix.settings = {
-    extra-substituters = [ "https://codex-cli.cachix.org" ];
+    extra-substituters = [
+      "https://codex-cli.cachix.org"
+      "https://cache.numtide.com"
+    ];
     extra-trusted-public-keys = [
       "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
   home-manager.users.jafed = {
-    imports = [ inputs.codex.homeManagerModules.default ];
-
-    programs.codexDesktopLinux = {
-      enable = false;
-      cliPackage = codexCli;
-      computerUseUi.enable = true;
-      remoteMobileControl.enable = true;
-      remoteControl.enable = true;
-    };
+    imports = [ ];
   };
 }
