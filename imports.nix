@@ -20,5 +20,6 @@
     # Extras
     ./config/gaming.nix
     ./config/code.nix
+    ./config/vicre.nix
   ];
 }

@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    codex = {
-      url = "github:ilysenko/codex-desktop-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     codex-cli = {
       url = "github:sadjow/codex-cli-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,10 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
-
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
+    vicre.url = "path:/home/jafed/devwork/vicre";
   };
 
   outputs =
@@ -41,12 +37,12 @@
       nixpkgs,
       nixpkgs-stable,
       home-manager,
-      codex,
       codex-cli,
       singularity-desktop,
       lanzaboote,
       helium,
       llm-agents,
+      vicre,
     }@inputs:
     let
       system = "x86_64-linux";
@@ -63,6 +59,7 @@
             home-manager.nixosModules.home-manager
             lanzaboote.nixosModules.lanzaboote
             singularity-desktop.nixosModules.default
+            vicre.nixosModules.default
           ];
         };
       };
