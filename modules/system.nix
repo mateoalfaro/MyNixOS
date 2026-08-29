@@ -47,6 +47,5 @@
   # Core packages
   environment.systemPackages = with pkgs; [
     git
-    inputs.helium.packages.x86_64-linux.default
   ];
 }

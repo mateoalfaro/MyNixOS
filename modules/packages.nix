@@ -13,6 +13,7 @@
     ryubing
     sbctl
     stremio-linux-shell
+    google-chrome
     vlc
     zed-editor
   ];

@@ -24,8 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helium.url = "github:schembriaiden/helium-browser-nix-flake";
-
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     vicre.url = "path:/home/jafed/devwork/vicre";
@@ -40,7 +38,6 @@
       codex-cli,
       singularity-desktop,
       lanzaboote,
-      helium,
       llm-agents,
       vicre,
     }@inputs:

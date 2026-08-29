@@ -27,7 +27,7 @@ in
     nil
     ripgrep
     rstudio
-    stablePkgs.jetbrains.clion
+    jetbrains.clion
     t3code
     nodejs
   ];
