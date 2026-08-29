@@ -291,11 +291,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1788028501,
-        "narHash": "sha256-T4x6yMXjYWgguhCdcF/Qd6M37fXcMD49m15+swNP7vI=",
+        "lastModified": 1788030246,
+        "narHash": "sha256-4f9w58sAMuopO++lg1ZV+WBOPE1rr98xC71olULB0YA=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "554bb434d76b2fb730796a9f09753cfb43116e9f",
+        "rev": "de010415f41d75317a5eedd9b7893d71ac14aed4",
         "type": "github"
       },
       "original": {
@@ -643,8 +643,8 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1788029983,
-        "narHash": "sha256-okFUxlQwnPj0N/XeIpRkfKc/HZQmptuz5thfIONsqrA=",
+        "lastModified": 1788030219,
+        "narHash": "sha256-rF8MK034qw5NDmZMTQFxVrBy9sB/4Yg+dhvywjKs0k0=",
         "path": "/home/jafed/devwork/vicre",
         "type": "path"
       },
