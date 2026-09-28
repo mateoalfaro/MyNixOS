@@ -15,21 +15,23 @@ in
     android-tools
     agentPackages.omp
     agentPackages.cli-proxy-api
-    opencode
     agentPackages.opencode2
+    agentPackages.opencode2-desktop
     codexCli
     agentPackages.chatgpt
-    agentPackages.dsh
+    agentPackages.claude-desktop
     gcc
     gh
     grim
     nixd
     nil
     ripgrep
-    rstudio
+    # rstudio removed: nixpkgs builds it against electron_41, which is EOL
+    # and marked insecure (Refusing to evaluate package 'electron-41.10.6').
     jetbrains.clion
     t3code
     nodejs
+    agentPackages.zcode
   ];
 
   nix.settings = {
