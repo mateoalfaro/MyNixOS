@@ -34,6 +34,13 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     vicre.url = "path:/home/jafed/devwork/vicre";
+
+    # GNOME-style shell for the Hyprland session (config/hyprland.nix).
+    adwshell = {
+      # git+file: only tracked files, so the dev scratch dir (.dev/) stays out.
+      url = "git+file:///home/jafed/devwork/adwshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,6 +55,7 @@
       lanzaboote,
       llm-agents,
       vicre,
+      adwshell,
     }@inputs:
     let
       system = "x86_64-linux";

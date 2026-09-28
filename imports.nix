@@ -16,6 +16,7 @@
 
     # Desktop Environment
     ./modules/gnome.nix
+    ./config/hyprland.nix
 
     # Extras
     ./config/gaming.nix

@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "adwshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790565574,
+        "narHash": "sha256-AsMfsUS+CSlHM7C1Jb6G32WGZUNOmnF7d0D/vDBZBJg=",
+        "ref": "refs/heads/main",
+        "rev": "a7c30ac7f8c01748b8931252a01f73d404366902",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///home/jafed/devwork/adwshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/jafed/devwork/adwshell"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -432,6 +452,7 @@
     },
     "root": {
       "inputs": {
+        "adwshell": "adwshell",
         "codex-cli": "codex-cli",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
