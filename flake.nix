@@ -29,6 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # llm-agents stays: code.nix still consumes its opencode2/chatgpt/dsh
+    # packages. vicre itself no longer needs it (it uses antigravity-cli).
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     vicre.url = "path:/home/jafed/devwork/vicre";
