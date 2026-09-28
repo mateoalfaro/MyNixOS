@@ -19,6 +19,11 @@
       url = "path:/home/jafed/devwork/singularity-flake";
     };
 
+    paper-desktop = {
+      url = "path:/home/jafed/devwork/paper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote/001e560";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +42,7 @@
       home-manager,
       codex-cli,
       singularity-desktop,
+      paper-desktop,
       lanzaboote,
       llm-agents,
       vicre,
@@ -56,6 +62,7 @@
             home-manager.nixosModules.home-manager
             lanzaboote.nixosModules.lanzaboote
             singularity-desktop.nixosModules.default
+            paper-desktop.nixosModules.default
             vicre.nixosModules.default
           ];
         };
