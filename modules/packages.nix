@@ -6,7 +6,6 @@
     bazaar
     bibata-cursors
     discord
-    #    mathematica
     onlyoffice-desktopeditors
     papirus-icon-theme
     resources
@@ -16,5 +15,12 @@
     google-chrome
     vlc
     zed-editor
+    python3
+    python3Packages.pillow
   ];
+
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
 }
